@@ -1,0 +1,17 @@
+-   Add Information to Telegram Notifications:
+    -   Latest Application Date
+    -   Tags / Topics from Description Texts
+
+-   Add Non-Automated Bot Functions:
+    -   List of all published Offers within timeframe (User input)
+
+-   Implement RSS-independent Webscraping for:
+    -   LMU
+    -   MIT
+    -   Frauenhofer Institutitons
+    -   ...?
+
+
+
+
+
