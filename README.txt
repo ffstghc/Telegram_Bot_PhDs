@@ -1,4 +1,4 @@
-Telegram Bot which sends a Notification if new PhD/Doctoral Studies Vacancies are found.
+Telegram Bot that sends Notifications if new PhD/Doctoral Studies Vacancies are found.
 
 Checks RSS Feeds multiple times a Day.
 
