@@ -18,10 +18,10 @@ from Non_Public_Info import Bot_Auth_Token, Bot_Channel_ChatID  # Get Info from 
 ###################
 ## RSS FEED URLS ##
 ###################
-URLs = ["https://uu.varbi.com/what:rssfeed/",   # Uppsala University
-        "https://portal.mytum.de/jobs/wissenschaftler/asRss",   # Technical University of Munich
-        "https://kidoktorand.varbi.com/en/what:rssfeed",    # Karolinska Institute (Direct Doctoral Link)
-        "https://www.mpg.de/feeds/jobs.rss"]    # Max-Planck Institute (< 4 weeks Feed provided!)
+URLs = ["https://www.mpg.de/feeds/jobs.rss", # Max-Planck Institute (< 4 weeks Feed provided!)
+        "https://kidoktorand.varbi.com/en/what:rssfeed",    # Karolinska Institute
+        "https://uu.varbi.com/what:rssfeed/",   # Uppsala University
+        "https://portal.mytum.de/jobs/wissenschaftler/asRss"]  # Technical University of Munich
 
 
 ##########
@@ -56,8 +56,8 @@ def Send_To_Channel(Message):
 
 # List of relevant strings in title to check for
 titles = ["Doktorand", "Doctoral",
-          "Doktorand*innen", "DoktorandInnen",
-          "PhD", "Ph.D", "Ph.D.", "(PhD)"]
+          "Doktorand*innen", "DoktorandInnen", "Doktorand*in", "Doktorand/in",
+          "PhD", "PHD"," Ph.D", "Ph.D.", "(PhD)", "PhD-Student*"]
 
 
 def main(URL, Limit_Hours):  # Get RSS data from URL List
@@ -90,7 +90,7 @@ def main(URL, Limit_Hours):  # Get RSS data from URL List
 
                 # Send_To_Channel(msg)  # Output Title + Date to Telegram Channel as 1st Message
 
-                sleep(4)  # Timer to avoid 30 msg/min Limit
+                # sleep(4)  # Timer to avoid 30 msg/min Limit
 
 
 ###############################################################
@@ -101,9 +101,9 @@ Update_Interval_seconds = Update_Interval_hours * 60 * 60  # Convert to Seconds 
 
 if __name__ == "__main__":
     while (True):
-        for URL in URLs:
+        for URL in URLs:    # Loop all provided URLs
             main(URL, Update_Interval_hours)
 
         for i in range(Update_Interval_seconds, 0, -5):
-            sleep(5) # Don't Spam Console
+            sleep(5) # Don't Spam Console (too much)
             print("Remaining Seconds until next Check: ", i)  # Show Countdown until next Check
