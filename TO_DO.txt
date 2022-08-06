@@ -2,11 +2,12 @@
     -   Latest Application Date
     -   Tags / Topics from Description Texts
 
--   Add Non-Automated Bot Functions:
-    -   List of all published Offers within timeframe (User input)
-
 -   Implement RSS-independent Webscraping for:
     -   LMU
     -   MIT
     -   Frauenhofer Institutitons
     -   ...?
+
+-   Add Non-Automated Bot Functions:
+    -   List of all published Offers within timeframe (User input)
+    -   Add Inline Function
