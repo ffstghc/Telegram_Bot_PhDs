@@ -25,7 +25,7 @@ URLs = ["https://www.mpg.de/feeds/jobs.rss", # Max-Planck Institute (< 4 weeks F
 
 
 ##########
-## TAGS ##
+## TAGS ## NOT IN USE YET ###
 ##########
 tags_diseases = []
 tags_techniques = []
