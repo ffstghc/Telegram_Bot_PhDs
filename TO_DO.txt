@@ -1,6 +1,6 @@
 -   Add Information to Telegram Notifications:
     -   Latest Application Date
-    -   Tags / Topics from Description Texts
+    -   FIX Tags / Topics from Description Texts (why in console but not in broadcast??)
 
 -   Implement RSS-independent Webscraping for:
     -   LMU
