@@ -1,6 +1,6 @@
 -   Add Information to Telegram Notifications:
     -   Latest Application Date
-    -   FIX Tags / Topics from Description Texts (why in console but not in broadcast??)
+    -   Fix Tags not appearing via percent encoding (?) (%23 = #)
 
 -   Implement RSS-independent Webscraping for:
     -   LMU

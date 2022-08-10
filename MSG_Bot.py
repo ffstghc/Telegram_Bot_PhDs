@@ -19,7 +19,7 @@ from Non_Public_Info import Bot_Auth_Token, Bot_Channel_ChatID  # Get Info from 
 URLs = ["https://www.mpg.de/feeds/jobs.rss",  # Max-Planck Institute (< 4 weeks Feed provided!)
         "https://kidoktorand.varbi.com/en/what:rssfeed",  # Karolinska Institute
         "https://uu.varbi.com/what:rssfeed/",  # Uppsala University
-        "https://portal.mytum.de/jobs/wissenschaftler/asRss"]  # Technical University of Munich
+        "https://portal.mytum.de/jobs/wissenschaftler/asRss"] # Technical University of Munich
 
 
 ###################################
@@ -86,7 +86,7 @@ def main(URL, Limit_Hours):  # Get RSS data from URL List
 
                 tags = []  # Empty for next run
 
-                [tags.append("#" + keywords[i].upper()) for i in range(0, len(keywords)) if keywords[i] in parsed_summary]
+                [tags.append(keywords[i].upper()) for i in range(0, len(keywords)) if keywords[i] in parsed_summary]
 
                 tags = list(set(tags))  # Avoid duplicated Tags
 
@@ -95,7 +95,8 @@ def main(URL, Limit_Hours):  # Get RSS data from URL List
                 # Combine Title, Date, Link
                 msg = entry.title + "\n" \
                       + entry.links[0].href + "\n" \
-                      + "Published: " + date_published + "\n" + tags
+                      + "Published: " + date_published + "\n" \
+                      + "Tags: " + tags
 
                 found.append(msg)  # Save Positions in List
 
@@ -105,18 +106,24 @@ def main(URL, Limit_Hours):  # Get RSS data from URL List
 ###############################################################
 ## RUN SEARCH FOR LIST OF URLS AND SPECIFIED UPDATE INTERVAL ##
 ###############################################################
-Update_Interval_hours = 120  # 168 = 1 Week; 680 1 Month
+Update_Interval_hours = 1  # 168 = 1 Week; 680 1 Month
 Update_Interval_seconds = Update_Interval_hours * 60 * 60  # Convert to Seconds for Sleep Function
+Console_Update_interval = 60 # Seconds
 
 if __name__ == "__main__":
+
     print("Bot started. Checking", len(URLs), "URLs every", Update_Interval_hours, "hours")
+
     while (True):
+
+        print("Executing new Search.")
+
         for URL in URLs:  # Loop all provided URLs
 
             found_pos = main(URL, Update_Interval_hours)  # Open Positions within single Institution
 
             if found_pos:   # Only if URL contained position that matches filter
-                for positions in range(len(found_pos)):
+                for positions in range(len(found_pos)): # Loop all found positions
                     print(found_pos[positions], "\n")  # Output Title + Date + Link to Console
 
                     #################################
@@ -126,8 +133,10 @@ if __name__ == "__main__":
                     # Send_To_Channel(found_pos[positions])  # Output Title + Date + Link to Telegram Channel
                     # sleep(4)  # Timer to avoid 30 msg/min Limit
 
-        print("All found Positions printed")
+        print("All found Positions printed.")
 
-        for i in range(Update_Interval_seconds, 0, -5):
-            sleep(60)  # Don't Spam Console (too much)
+        print("Update Interval for Console: ", Console_Update_interval)
+
+        for i in range(Update_Interval_seconds, 0, -Console_Update_interval):
             print("Remaining Seconds until next Check: ", i)  # Show Countdown until next Check
+            sleep(Console_Update_interval)  # Don't Spam Console (too much)
