@@ -56,7 +56,7 @@ tags_techniques = []
 keywords = ["Bioinformatics", "Pharmacometrics", "Biotechnology", "Immunology", "Neuroscience", "Genetics",
             "Biology", "Physics", "Chemistry", "Material Science", "Biochemistry",
             "Machine Learning", "Imaging", "Oncology",
-            "Python", "R", "UNIX", "MATLAB", "SQL"]
+            "Python", "UNIX", "MATLAB", "SQL"]
 
 keywords = keywords + [x.lower() for x in keywords]  # Add lower case versions of keywords
 
@@ -85,7 +85,7 @@ def main(URL, Limit_Hours):  # Get RSS data from URL List
                 parsed_summary = entry.summary
 
                 tags = []  # Empty for next run
-
+                # Check if tags are contained in summary
                 [tags.append(keywords[i].upper()) for i in range(0, len(keywords)) if keywords[i] in parsed_summary]
 
                 tags = list(set(tags))  # Avoid duplicated Tags
@@ -106,15 +106,15 @@ def main(URL, Limit_Hours):  # Get RSS data from URL List
 ###############################################################
 ## RUN SEARCH FOR LIST OF URLS AND SPECIFIED UPDATE INTERVAL ##
 ###############################################################
-Update_Interval_hours = 1  # 168 = 1 Week; 680 1 Month
+Update_Interval_hours = 24 # 168 = 1 Week; 680 1 Month
 Update_Interval_seconds = Update_Interval_hours * 60 * 60  # Convert to Seconds for Sleep Function
-Console_Update_interval = 60 # Seconds
+Console_Update_interval = 1200 # Seconds 1200: 20 Minutes
 
 if __name__ == "__main__":
 
     print("Bot started. Checking", len(URLs), "URLs every", Update_Interval_hours, "hours")
 
-    while (True):
+    while True:
 
         print("Executing new Search.")
 
@@ -122,21 +122,21 @@ if __name__ == "__main__":
 
             found_pos = main(URL, Update_Interval_hours)  # Open Positions within single Institution
 
-            if found_pos:   # Only if URL contained position that matches filter
-                for positions in range(len(found_pos)): # Loop all found positions
-                    print(found_pos[positions], "\n")  # Output Title + Date + Link to Console
+            for positions in range(len(found_pos)): # Loop all found positions
 
-                    #################################
-                    ## UNCOMMENT HERE TO BROADCAST ##
-                    #################################
+                print(found_pos[positions], "\n")  # Output Title + Date + Link to Console
 
-                    # Send_To_Channel(found_pos[positions])  # Output Title + Date + Link to Telegram Channel
-                    # sleep(4)  # Timer to avoid 30 msg/min Limit
+                #################################
+                ## UNCOMMENT HERE TO BROADCAST ##
+                #################################
+
+                # Send_To_Channel(found_pos[positions])  # Output Title + Date + Link to Telegram Channel
+                # sleep(4)  # Timer to avoid 30 msg/min Limit
 
         print("All found Positions printed.")
 
         print("Update Interval for Console: ", Console_Update_interval)
 
         for i in range(Update_Interval_seconds, 0, -Console_Update_interval):
-            print("Remaining Seconds until next Check: ", i)  # Show Countdown until next Check
+            print("Remaining Seconds until next URL Checks: ", i)  # Show Countdown until next Check
             sleep(Console_Update_interval)  # Don't Spam Console (too much)
