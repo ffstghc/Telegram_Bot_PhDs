@@ -19,7 +19,10 @@ from Non_Public_Info import Bot_Auth_Token, Bot_Channel_ChatID  # Get Info from 
 URLs = ["https://www.mpg.de/feeds/jobs.rss",  # Max-Planck Institute (< 4 weeks Feed provided!)
         "https://kidoktorand.varbi.com/en/what:rssfeed",  # Karolinska Institute
         "https://uu.varbi.com/what:rssfeed/",  # Uppsala University
-        "https://portal.mytum.de/jobs/wissenschaftler/asRss"] # Technical University of Munich
+        "https://portal.mytum.de/jobs/wissenschaftler/asRss", # Technical University of Munich
+        "https://adb.zuv.uni-heidelberg.de/info/INFO_FDB$.rss_feed"] # Heidelberg University
+        # "https://www.fz-juelich.de/++api++/@@rss?portal_type=Joboffer"] # FZ Juelich hasn't set up their RSS feed correctly, yet (Apr-2023)
+
 
 
 ###################################
@@ -45,9 +48,10 @@ def Send_To_Channel(Message):
 
 ## List of relevant strings in title to check for
 titles = ["Doktorand", "Doctoral",
-          "Doktorand*innen", "DoktorandInnen", "Doktorand*in", "Doktorand/in",
+          "Doktorand*innen", "DoktorandInnen", "Doktorand*in", "Doktorand/in", # German Gendering Bullshit
           "Promotionsstelle", "Promotion",
-          "PhD", "PHD", " Ph.D", "Ph.D.", "(PhD)", "PhD-Student*"]
+          "PhD", "PHD", " Ph.D", "Ph.D.", "(PhD)", "PhD-Student*",
+          "pre-doctoral"] # That's how they call it at Heidelberg
 
 ## TAGS ##
 tags_diseases = []
@@ -56,7 +60,8 @@ tags_techniques = []
 keywords = ["Bioinformatics", "Pharmacometrics", "Biotechnology", "Immunology", "Neuroscience", "Genetics",
             "Biology", "Physics", "Chemistry", "Material Science", "Biochemistry",
             "Machine Learning", "Imaging", "Oncology",
-            "Python", "UNIX", "MATLAB", "SQL"]
+            "Python", "UNIX", "MATLAB", "SQL",
+            "PKPD", "DMPK", "PBPK"]
 
 keywords = keywords + [x.lower() for x in keywords]  # Add lower case versions of keywords
 
@@ -106,7 +111,7 @@ def main(URL, Limit_Hours):  # Get RSS data from URL List
 ###############################################################
 ## RUN SEARCH FOR LIST OF URLS AND SPECIFIED UPDATE INTERVAL ##
 ###############################################################
-Update_Interval_hours = 24 # 168 = 1 Week; 680 1 Month
+Update_Interval_hours = 1500 # 168 = 1 Week; 680 1 Month
 Update_Interval_seconds = Update_Interval_hours * 60 * 60  # Convert to Seconds for Sleep Function
 Console_Update_interval = 1200 # Seconds 1200: 20 Minutes
 

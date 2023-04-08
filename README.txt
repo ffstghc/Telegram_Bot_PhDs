@@ -9,5 +9,6 @@ At the moment, the publicly available RSS feeds of the following Universities/In
 -   Technical University of Munich (TUM)
 -   Karolinska Institute (KI)
 -   Max-Planck-Institutes (MPIs)
+-   Heidelberg University
 
-!! Still under Development !!
+! Main development finished, changes (more universities, tags) still possible !
