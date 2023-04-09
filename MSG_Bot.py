@@ -20,7 +20,10 @@ URLs = ["https://www.mpg.de/feeds/jobs.rss",  # Max-Planck Institute (< 4 weeks 
         "https://kidoktorand.varbi.com/en/what:rssfeed",  # Karolinska Institute
         "https://uu.varbi.com/what:rssfeed/",  # Uppsala University
         "https://portal.mytum.de/jobs/wissenschaftler/asRss", # Technical University of Munich
-        "https://adb.zuv.uni-heidelberg.de/info/INFO_FDB$.rss_feed"] # Heidelberg University
+        "https://adb.zuv.uni-heidelberg.de/info/INFO_FDB$.rss_feed", # Heidelberg University
+        "https://www.universiteitleiden.nl/vacatures/rss.xml"] # Leiden University (< 1 week Feed provided!)
+
+        # "https://employment.ku.dk/phd/?get_rss=1", # University of Copenhagen (< 1 week Feed provided!) # Wrong links provieded via RSS
         # "https://www.fz-juelich.de/++api++/@@rss?portal_type=Joboffer"] # FZ Juelich hasn't set up their RSS feed correctly, yet (Apr-2023)
 
 
@@ -50,7 +53,7 @@ def Send_To_Channel(Message):
 titles = ["Doktorand", "Doctoral",
           "Doktorand*innen", "DoktorandInnen", "Doktorand*in", "Doktorand/in", # German Gendering Bullshit
           "Promotionsstelle", "Promotion",
-          "PhD", "PHD", " Ph.D", "Ph.D.", "(PhD)", "PhD-Student*",
+          "PhD", "phd", "Phd", "PHD", " Ph.D", "Ph.D.", "(PhD)", "PhD-Student*",
           "pre-doctoral"] # That's how they call it at Heidelberg
 
 ## TAGS ##
