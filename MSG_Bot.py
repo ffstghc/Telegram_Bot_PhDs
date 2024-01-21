@@ -26,10 +26,10 @@ URLs = ["https://www.mpg.de/feeds/jobs.rss",  # Max-Planck Institute (< 4 weeks 
         "https://uu.varbi.com/what:rssfeed/",  # Uppsala University
         "https://portal.mytum.de/jobs/wissenschaftler/asRss", # Technical University of Munich
         "https://adb.zuv.uni-heidelberg.de/info/INFO_FDB$.rss_feed",  # Heidelberg University
-        "https://www.universiteitleiden.nl/vacatures/rss.xml"]  # Leiden University (< 1 week Feed provided!)
+        "https://www.universiteitleiden.nl/vacatures/rss.xml",  # Leiden University (< 1 week Feed provided!)
+        "https://www.fz-juelich.de/++api++/@@rss?portal_type=Joboffer"] # FZ Juelich (Helmholtz)
+	    # "https://employment.ku.dk/phd/?get_rss=1", # University of Copenhagen (< 1 week Feed provided!) # Wrong links provided via RSS
 
-	# "https://employment.ku.dk/phd/?get_rss=1", # University of Copenhagen (< 1 week Feed provided!) # Wrong links provided via RSS
-        # "https://www.fz-juelich.de/++api++/@@rss?portal_type=Joboffer"] # FZ Juelich hasn't set up their RSS feed correctly, yet (Apr-2023)
 
 
 

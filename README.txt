@@ -11,5 +11,6 @@ At the moment, the publicly available RSS feeds of the following Universities/In
 -   Max-Planck-Institutes (MPIs)
 -   Heidelberg University (HU)
 -   Leiden University (LU)
+-   Forschungszentrum Jülich (Helmholtz Association Member) (FSJ)
 
 ! Main development finished, changes (more universities, tags) still possible !
